@@ -19,7 +19,7 @@ public class DecryptProcessor {
             (byte)0xC0, (byte)0xBD, (byte)0xBF, (byte)0x5C, (byte)0x6C, (byte)0x3E, (byte)0xD3, (byte)0xCE, (byte)0xAD, (byte)0xEB, (byte)0x7A, (byte)0x2,  (byte)0x37, (byte)0x93, (byte)0x12, (byte)0x6F,
             (byte)0x99, (byte)0xE0, (byte)0x9A, (byte)0xF9, (byte)0x28, (byte)0xC6, (byte)0xB2, (byte)0x8E, (byte)0x1B, (byte)0xBE, (byte)0x7E, (byte)0xCD, (byte)0x6C, (byte)0xEC, (byte)0xED, (byte)0xA5};
 
-    private static final int MAX_READ_LEN = 4096;
+    private static final int MAX_READ_LEN = 8192;
     public static void main(String[] args) {
         String inputFilePath;
         String outputFilePath;
@@ -53,14 +53,17 @@ public class DecryptProcessor {
             }
         }
 
-        FileInputStream in = null;
+        RandomAccessFile randomFile = null;
         FileOutputStream out = null;
-//        URL inputFileUrl = Test.class.getClassLoader().getResource("zorro.log.enc");
-//        System.out.println("getResource:"+inputFileUrl);
         File inputFile = new File(inputFilePath);
         File outputFile = new File(outputFilePath);
         try {
-            in = new FileInputStream(inputFile);
+            randomFile = new RandomAccessFile(inputFile, "r");
+            randomFile.seek(0);
+            // 文件长度，字节数
+            long fileLength = randomFile.length();
+//            long fileCurrentIndex = randomFile.getFilePointer();
+//            System.out.println("fileLength:" + fileLength + " fileCurrentIndex:" + fileCurrentIndex);
             out = new FileOutputStream(outputFile);
 
             if (!outputFile.exists()) {
@@ -70,23 +73,34 @@ public class DecryptProcessor {
             byte[] headerBuf = new byte[8];
             byte[] realEncryptLenByte = new byte[4];
             int index = 0;
-            while ((in.read(readBuf, 0, 1)) != -1) {
+            while ((randomFile.read(readBuf, 0, 1)) != -1) {
                 headerBuf[index] = readBuf[0];
                 if (index >= 3) {
                     if (headerBuf[0] == DATA_HEADER[0] && headerBuf[1] == DATA_HEADER[1] && headerBuf[2] == DATA_HEADER[2] && headerBuf[3] == DATA_HEADER[3]) {
                         index = 0;
-                        int readLen = in.read(readBuf, 0, 4);
+                        int readLen = randomFile.read(readBuf, 0, 4);
                         if (readLen < 4){
                             System.out.println("no more data! readLen:" + readLen);
                             break;
                         }
+                        long readFilePos = randomFile.getFilePointer();
                         System.arraycopy(readBuf, 0, realEncryptLenByte,0, realEncryptLenByte.length);
                         int realEncryptLen = bytesToInt(realEncryptLenByte);
-                        System.out.println("realEncryptLen:" + realEncryptLen);
+//                        System.out.println("realEncryptLen:" + realEncryptLen + " readFilePos:" + readFilePos + " fileLength - readFilePos="+(fileLength - readFilePos));
+                        if (realEncryptLen > fileLength - readFilePos) {
+                            String err = "error: xor decrypt header data error!!! skip this line in log file\n";
+                            out.write(err.getBytes(), 0, err.length());
+                            continue;
+                        }
 
+                        if (realEncryptLen > MAX_READ_LEN) {
+                            String err = "error: xor decrypt data len > MAX_READ_LEN(4096), skip this line in log file\n";
+                            out.write(err.getBytes(), 0, err.length());
+                            continue;
+                        }
 
                         Arrays.fill(readBuf, (byte) 0);
-                        readLen = in.read(readBuf, 0, realEncryptLen);
+                        readLen = randomFile.read(readBuf, 0, realEncryptLen);
                         if (readLen < realEncryptLen){
                             System.out.println("no more data!! readLen:" + readLen);
                             break;
@@ -94,9 +108,10 @@ public class DecryptProcessor {
                         xorDecrypt(readBuf, readBuf, realEncryptLen);
                         out.write(readBuf, 0, realEncryptLen);
                         Arrays.fill(readBuf, (byte) 0);
+                        randomFile.seek(readFilePos);
                     } else {
-                        byte[] tmp = Arrays.copyOfRange(readBuf, 1,4);
-                        System.arraycopy(tmp, 0, readBuf, 0, 3);
+                        byte[] tmp = Arrays.copyOfRange(headerBuf, 1,4);
+                        System.arraycopy(tmp, 0, headerBuf, 0, 3);
                     }
                 } else {
                     index++;
@@ -117,9 +132,9 @@ public class DecryptProcessor {
             }
             try {
 //                    System.out.println("in.close "+(in != null));
-                if (in != null) {
-                    in.close();
-                    in = null;
+                if (randomFile != null) {
+                    randomFile.close();
+                    randomFile = null;
                 }
             } catch (IOException e) {
                 e.printStackTrace();

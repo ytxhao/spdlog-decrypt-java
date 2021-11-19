@@ -95,8 +95,8 @@ public class Test {
                         out.write(readBuf, 0, realEncryptLen);
                         Arrays.fill(readBuf, (byte) 0);
                     } else {
-                        byte[] tmp = Arrays.copyOfRange(readBuf, 1,4);
-                        System.arraycopy(tmp, 0, readBuf, 0, 3);
+                        byte[] tmp = Arrays.copyOfRange(headerBuf, 1,4);
+                        System.arraycopy(tmp, 0, headerBuf, 0, 3);
                     }
                 } else {
                     index++;
