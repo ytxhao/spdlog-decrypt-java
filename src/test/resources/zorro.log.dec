@@ -1,0 +1,116 @@
+2021-11-17 17:20:13.047 13593 I: ====== zorro init >>> ======
+2021-11-17 17:20:13.047 13593 I: Set RTC engine observer true <<<
+2021-11-17 17:20:13.047 13593 I: Set RTC engine observer >>>
+2021-11-17 17:20:13.056 13593 I: MSG_SET_RTC_ENGINE_CONFIG: Live, IN >>>
+2021-11-17 17:20:13.056 13593 I: SetParameters {"debug.log_level":2} <<<
+2021-11-17 17:20:13.056 13593 I: SetParameters >>>
+2021-11-17 17:20:13.056 13593 I: SetParameters {"test.env":true} <<<
+2021-11-17 17:20:13.056 13593 I: SetParameters >>>
+2021-11-17 17:20:13.056 13593 I: SetParameters {"debug.dump_pushed_pcm":false} <<<
+2021-11-17 17:20:13.056 13593 I: SetParameters >>>
+2021-11-17 17:20:13.056 13593 I: SetParameters {"debug.dump_pulled_pcm":false} <<<
+2021-11-17 17:20:13.056 13593 I: SetParameters >>>
+2021-11-17 17:20:13.056 13593 I: SetParameters {"debug.dump_apm_processed_pcm":false} <<<
+2021-11-17 17:20:13.056 13593 I: SetParameters >>>
+2021-11-17 17:20:13.056 13593 I: SetParameters {"app.domain":"starmakerstudios.com"} <<<
+2021-11-17 17:20:13.056 13593 I: UpdateAppDomain: starmakerstudios.com
+2021-11-17 17:20:13.056 13593 I: SetParameters >>>
+2021-11-17 17:20:13.056 13593 I: SetParameters {"media.encrypt":true} <<<
+2021-11-17 17:20:13.056 13593 I: SetParameters >>>
+2021-11-17 17:20:13.057 13593 I: MSG_ENABLE_AUDIO_VOLUME_INDICATE: false, 100 <<<
+2021-11-17 17:20:13.057 13593 I: MSG_ENABLE_AUDIO_VOLUME_INDICATE: >>>
+2021-11-17 17:20:13.057 13593 I: MSG_SET_CHANNEL_PROFILE: 1 >>>
+2021-11-17 17:20:13.057 13593 I: SetParameters {"audio.codec":1} <<<
+2021-11-17 17:20:13.057 13593 I: SetParameters >>>
+2021-11-17 17:20:13.058 13593 I: MSG_SET_EXTERNAL_AUDIO_SOURCE: external true, 44100hz, 2channel(s) <<<
+2021-11-17 17:20:13.058 13593 I: MSG_SET_EXTERNAL_AUDIO_SOURCE: external true, 44100hz, 2channel(s) >>>
+2021-11-17 17:20:13.058 13593 I: MSG_ENABLE_VIDEO: true >>>
+2021-11-17 17:20:13.058 13593 I: SetParameters {"video.soft_video_dec":false} <<<
+2021-11-17 17:20:13.058 13593 I: SetParameters >>>
+2021-11-17 17:20:13.058 13593 I: MSG_SET_VIDEO_ENCODER_CONFIG: on-the-fly:false, 800-240, 15-6 >>>
+2021-11-17 17:20:13.058 13593 I: MSG_SET_EXTERNAL_VIDEO_SOURCE: external true, 352x640
+2021-11-17 17:20:13.058 13593 I: SetParameters {"connect.timeout":60000} <<<
+2021-11-17 17:20:13.058 13593 I: SetParameters >>>
+2021-11-17 17:20:13.058 13593 I: MSG_SET_CLIENT_ROLE on-the-fly (false): 1 (3)
+2021-11-17 17:20:13.058 13593 I: MSG_JOIN_CHANNEL: <<<
+2021-11-17 17:20:13.060 13593 I: cm NeedUpdate? 0.0.0 vs 1.1.7
+2021-11-17 17:20:13.060 13593 I: cm update >>> true 
+2021-11-17 17:20:13.060 13593 I: load balancer request: profile=1 user_id=l22499 room_id=live852254 sdk_version=develop-a288cee845-develop_encrypt-907e58d84c app_id=Live, is_owner=true, os=ios, os_version=14.3, device_model=Apple/iPhone8,1, cpu=, cpu_max_freq=0, cpu_cores=0, app_domain=starmakerstudios.com
+2021-11-17 17:20:13.061 13593 I: MSG_JOIN_CHANNEL: >>>
+2021-11-17 17:20:13.061 13593 I: SetLiveTranscodingConfig config:{"audio":{"br":48,"ch":1,"sr":48000},"regions":[{"pos":[0,0,352,640],"user":"l22499","video":true,"zorder":0}],"video":{"bg-color":"","bg-url":"","br":800,"fps":15,"gop":15,"size":[352,640]}}, state error, state:0, leave:false
+2021-11-17 17:20:13.063 13593 I: HTTP request start 8000
+2021-11-17 17:20:13.220 13593 I: HTTP request-response time: 157
+2021-11-17 17:20:13.221 13593 I: No alternate server
+2021-11-17 17:20:13.221 13593 I: Server config changed
+2021-11-17 17:20:13.221 13593 I: load balancer response: type=0 domain=140.143.57.31 address=140.143.57.31 port=20000, location=Mumbai delayMs=0, protocol=quic, audioEngine=1, audioLayer=dummyInputOpenSLESOutput, audioMode=0, audioSource=0, audioSampleRate=0, audioRecordChan=0, audioPlayChan=0, enalbeFec=false, rs=true, v6Check=true, stunType=0, sdes=false, ccVersion=1
+2021-11-17 17:20:13.223 13593 I: cm WriteToFile 0
+2021-11-17 17:20:13.224 13593 I: MSG_LOGIN: iOS version:develop-a288cee845-develop_encrypt-907e58d84c, uid:l22499, room:live852254, protocol:quic, v6_check:true, state:0
+2021-11-17 17:20:13.224 13593 I: Network: IPStack_IPv4 [0]
+2021-11-17 17:20:13.225 13593 I: use quic windtalker
+2021-11-17 17:20:13.225 13593 I: MSG_LOGIN: addr: 140.143.57.31 domain: 140.143.57.31 port: 20000 >>>
+2021-11-17 17:20:13.233 13593 I: OnConnected
+2021-11-17 17:20:13.233 13593 I: OnConnected, subscribe id:0
+2021-11-17 17:20:13.233 13593 I: MSG_ON_LOG_IN_STATE:ok, state:0 <<<
+2021-11-17 17:20:13.233 13593 I: MSG_ON_LOG_IN_STATE: reason:0 <<<
+2021-11-17 17:20:13.233 13593 I: cm update >>> false 
+2021-11-17 17:20:13.233 13593 I: load balancer request: profile=1 user_id=l22499 room_id=live852254 sdk_version=develop-a288cee845-develop_encrypt-907e58d84c app_id=Live, is_owner=true, os=ios, os_version=14.3, device_model=Apple/iPhone8,1, cpu=, cpu_max_freq=0, cpu_cores=0, app_domain=starmakerstudios.com
+2021-11-17 17:20:13.233 13593 I: MSG_ON_LOG_IN_STATE: >>>
+2021-11-17 17:20:13.234 13593 I: MSG_SETUP_CALL: roomid: live852254, uid: l22499, timeout: 10000, media: 2, dir: 3, 352x640, target: 800kbps, min: 240kbps, ext h264 capture: true, ext pcm capture: true, audio codec: 1, enable push: false, push url: , server locaction: Mumbai, video fec: false, rs: true, audio engine: only available for Android, audio layer: only available for Android, extra_info: {"id":"l22499","slotIndex":"-1","isVideo":"true"}, reason: 0 Live <<<
+2021-11-17 17:20:13.234 13593 I: MSG_SETUP_CALL: reason=0 >>>
+2021-11-17 17:20:13.234 13593 I: HTTP request start 15000
+2021-11-17 17:20:13.235 13593 I: Set conference state: 1
+2021-11-17 17:20:13.235 13593 I: SendMessage join published, id:0
+2021-11-17 17:20:13.260 13593 I: HTTP request-response time: 26
+2021-11-17 17:20:13.260 13593 I: No alternate server
+2021-11-17 17:20:13.260 13593 I: load balancer response: type=0 domain=140.143.57.31 address=140.143.57.31 port=20000, location=Mumbai delayMs=0, protocol=quic, audioEngine=1, audioLayer=dummyInputOpenSLESOutput, audioMode=0, audioSource=0, audioSampleRate=0, audioRecordChan=0, audioPlayChan=0, enalbeFec=false, rs=true, v6Check=true, stunType=0, sdes=false, ccVersion=1
+2021-11-17 17:20:13.261 13593 I: cm WriteToFile 0
+2021-11-17 17:20:13.396 13593 I: Set conference state: 2
+2021-11-17 17:20:13.396 13593 I: tcc applied.
+2021-11-17 17:20:13.397 13593 I: MSG_ON_REMOTE_DESCRIPTION_SET: sdes:false
+2021-11-17 17:20:13.397 13593 I: iOS device: iPhone8,1
+2021-11-17 17:20:13.401 13593 I: ADM: set audio recording to true.
+2021-11-17 17:20:13.401 13593 I: External audio device utilized.
+2021-11-17 17:20:13.434 13593 I: External video capture with 352x640@15
+2021-11-17 17:20:13.452 13593 I: CheckLogInState stop for state: 4
+2021-11-17 17:20:13.463 13593 W: Abandon P frames, total dropped: 3
+2021-11-17 17:20:13.465 13593 I: External audio player start: true, true, false
+2021-11-17 17:20:13.476 13593 I: ice connection new_state: 1
+2021-11-17 17:20:13.476 13593 I: Signaling: RTX
+2021-11-17 17:20:13.476 13593 I: Set conference state: 3
+2021-11-17 17:20:13.477 13593 I: SendMessage session-accept published, id:0
+2021-11-17 17:20:13.592 13593 I: Set conference state: 4
+2021-11-17 17:20:13.596 13593 I: MSG_ON_LOCAL_DESCRIPTION_ACK: JoinChannel OK, PK state:0, 371ms
+2021-11-17 17:20:13.597 13593 I: SendMessage mix-config published, id:0
+2021-11-17 17:20:13.684 13593 I: CheckChannelState stop for state: 1
+2021-11-17 17:20:13.694 13593 W: Abandon P frames, total dropped: 6
+2021-11-17 17:20:13.761 13593 I: CheckSetupCallState stop for state: 7
+2021-11-17 17:20:13.792 13593 I: DTLS timeout expired
+2021-11-17 17:20:13.859 13593 W: Abandon P frames, total dropped: 9
+2021-11-17 17:20:14.057 13593 W: Abandon P frames, total dropped: 12
+2021-11-17 17:20:14.091 13593 I: DtlsTransport[audio|1|__] DTLS handshake complete.
+2021-11-17 17:20:14.092 13593 I: ice connection new_state: 2
+2021-11-17 17:20:14.092 13593 I: media connection success:true, elapsed_ms:657, sdes:false
+2021-11-17 17:20:14.097 13593 I: External audio recorder start: true, true, false
+2021-11-17 17:20:14.097 13593 I: Adm recorder start: 0
+2021-11-17 17:20:14.107 13593 I: First audio frame received: 80ms, 2048 samples
+2021-11-17 17:20:14.254 13593 W: Abandon P frames, total dropped: 15
+2021-11-17 17:20:14.393 13593 I: Push first I frame...
+2021-11-17 17:20:14.393 13593 I: First video frame received: I, 12979 bytes
+2021-11-17 17:20:14.395 13593 I: Set video encoding rate: 382kpbs, 25fps
+2021-11-17 17:20:14.411 13593 I: Set video encoding rate: 305kpbs, 25fps
+2021-11-17 17:20:14.544 13593 I: Set video encoding rate: 382kpbs, 20fps
+2021-11-17 17:20:21.609 13593 I: LOCAL_VIDEO_STATS: 319kbps, 14fps
+2021-11-17 17:20:23.612 13593 I: LOCAL_VIDEO_STATS: 338kbps, 14fps
+2021-11-17 17:20:25.615 13593 I: LOCAL_VIDEO_STATS: 324kbps, 14fps
+2021-11-17 17:20:27.618 13593 I: LOCAL_VIDEO_STATS: 328kbps, 14fps
+2021-11-17 17:20:29.619 13593 I: LOCAL_VIDEO_STATS: 316kbps, 14fps
+2021-11-17 17:20:31.622 13593 I: LOCAL_VIDEO_STATS: 311kbps, 14fps
+2021-11-17 17:20:33.623 13593 I: LOCAL_VIDEO_STATS: 312kbps, 14fps
+2021-11-17 17:20:35.632 13593 I: LOCAL_VIDEO_STATS: 305kbps, 14fps
+2021-11-17 17:20:37.645 13593 I: LOCAL_VIDEO_STATS: 305kbps, 14fps
+2021-11-17 17:20:39.651 13593 I: LOCAL_VIDEO_STATS: 319kbps, 14fps
+2021-11-17 17:20:41.654 13593 I: LOCAL_VIDEO_STATS: 327kbps, 14fps
+2021-11-17 17:20:41.654 13593 I: LOCAL_AUDIO_STATS: delay 333ms, 43kbps
+2021-11-17 17:20:43.662 13593 I: LOCAL_VIDEO_STATS: 326kbps, 14fps
+2021-11-17 17:20:43.662 13593 I: LOCAL_AUDIO_STATS: delay 398ms, 46kbps
+2021-11-17 17:20:45.670 13593 I: LOCAL_VIDEO_STATS: 322kbps, 14fps
