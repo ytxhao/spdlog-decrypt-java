@@ -7,9 +7,9 @@ import java.util.Arrays;
 public class Test {
 
     // 数据头包含4字节的起始码，和四字节的加密数据长度
-    private static byte[] DATA_HEADER = new byte[] {(byte)0x00, (byte)0x00, (byte)0x00, (byte)0x01, (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00};
+    private static final byte[] DATA_HEADER = new byte[] {(byte)0x00, (byte)0x00, (byte)0x00, (byte)0x01, (byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00};
 
-    private static byte[] KEY = new byte[]{
+    private static final byte[] KEY = new byte[]{
                 (byte)0xD6, (byte)0x71, (byte)0x3F, (byte)0xC0, (byte)0x65, (byte)0x87, (byte)0xD5, (byte)0x8B, (byte)0x56, (byte)0x3C, (byte)0x6E, (byte)0xF9, (byte)0xED, (byte)0xAD, (byte)0x24, (byte)0x92,
                 (byte)0x70, (byte)0xFC, (byte)0x96, (byte)0x10, (byte)0x89, (byte)0x9C, (byte)0xFA, (byte)0x45, (byte)0xB6, (byte)0x52, (byte)0xB,  (byte)0xCD, (byte)0x6C, (byte)0xF6, (byte)0x18, (byte)0x3A,
                 (byte)0xC0, (byte)0xBD, (byte)0xBF, (byte)0x5C, (byte)0x6C, (byte)0x3E, (byte)0xD3, (byte)0xCE, (byte)0xAD, (byte)0xEB, (byte)0x7A, (byte)0x2,  (byte)0x37, (byte)0x93, (byte)0x12, (byte)0x6F,
@@ -73,16 +73,18 @@ public class Test {
             while ((in.read(readBuf, 0, 1)) != -1) {
                 headerBuf[index] = readBuf[0];
                 if (index >= 3) {
-                    if (headerBuf[0] == 0x00 && headerBuf[1] == 0x00 && headerBuf[2] == 0x00 && headerBuf[3] == 0x01) {
+                    if (headerBuf[0] == DATA_HEADER[0] && headerBuf[1] == DATA_HEADER[1] && headerBuf[2] == DATA_HEADER[2] && headerBuf[3] == DATA_HEADER[3]) {
                         index = 0;
                         int readLen = in.read(readBuf, 0, 4);
                         if (readLen < 4){
                             System.out.println("no more data! readLen:" + readLen);
                             break;
                         }
-                        System.arraycopy(readBuf, 0, realEncryptLenByte,0,realEncryptLenByte.length);
+                        System.arraycopy(readBuf, 0, realEncryptLenByte,0, realEncryptLenByte.length);
                         int realEncryptLen = bytesToInt(realEncryptLenByte);
                         System.out.println("realEncryptLen:" + realEncryptLen);
+
+
                         Arrays.fill(readBuf, (byte) 0);
                         readLen = in.read(readBuf, 0, realEncryptLen);
                         if (readLen < realEncryptLen){
