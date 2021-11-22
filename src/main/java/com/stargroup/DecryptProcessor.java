@@ -61,11 +61,11 @@ public class DecryptProcessor {
             randomFile = new RandomAccessFile(inputFile, "r");
             randomFile.seek(0);
             long fileLength = randomFile.length();
-            out = new FileOutputStream(outputFile);
-
-            if (!outputFile.exists()) {
-                outputFile.createNewFile();
+            if (outputFile.exists()) {
+                outputFile.delete();
             }
+            outputFile.createNewFile();
+            out = new FileOutputStream(outputFile);
             byte[] readBuf = new byte[MAX_READ_LEN];
             byte[] headerBuf = new byte[8];
             byte[] realEncryptLenByte = new byte[4];
